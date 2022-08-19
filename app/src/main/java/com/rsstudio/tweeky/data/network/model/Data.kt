@@ -1,7 +1,7 @@
 package com.rsstudio.tweeky.data.network.model
 
 data class Data(
-    val id: Int,
+    val id: String,
     val name: String,
     val score: Int,
     val runup: Int,

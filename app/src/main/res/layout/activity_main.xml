@@ -14,12 +14,18 @@
             layout="@layout/view_card"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvScore"
+            android:id="@+id/rvAthlete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cv"
-            android:layout_marginTop="@dimen/_120sdp"
+            android:layout_marginTop="@dimen/_90sdp"
             android:overScrollMode="never" />
+
+        <include
+            android:id="@+id/iLoader"
+            android:visibility="gone"
+            layout="@layout/view_loader"/>
+
 
     </FrameLayout>
 </layout>

@@ -1,5 +1,6 @@
 package com.rsstudio.tweeky.ui.main.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -31,9 +32,11 @@ constructor(
 
     private fun getAthleteData() {
 
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
 
             val result = repository.getAthleteData()
+
+            Log.d(logTag, "getAthleteData: $result")
 
             _athleteData.value = result
 
