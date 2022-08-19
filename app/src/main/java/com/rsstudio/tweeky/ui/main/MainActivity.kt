@@ -1,12 +1,18 @@
 package com.rsstudio.tweeky.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import com.rsstudio.tweeky.R
 
-class MainActivity : AppCompatActivity() {
+import android.os.Bundle
+import androidx.databinding.DataBindingUtil
+import com.rsstudio.tweeky.R
+import com.rsstudio.tweeky.databinding.ActivityMainBinding
+import com.rsstudio.tweeky.ui.base.BaseActivity
+
+class MainActivity : BaseActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
     }
 }
