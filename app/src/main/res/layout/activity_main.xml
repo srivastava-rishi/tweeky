@@ -3,23 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.main.MainActivity">
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/rlRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/white3">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <include
+            android:id="@+id/iCard"
+            layout="@layout/view_card"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvScore"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Main Screen"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:textColor="@color/chineseBlack2"
-            android:textSize="@dimen/_16ssp"
-            fontPath="fonts/Montserrat-Regular.ttf"
-            tools:ignore="MissingPrefix"
-            />
+            android:layout_below="@+id/cv"
+            android:layout_marginTop="@dimen/_120sdp"
+            android:overScrollMode="never" />
 
-    </RelativeLayout>
+    </FrameLayout>
 </layout>

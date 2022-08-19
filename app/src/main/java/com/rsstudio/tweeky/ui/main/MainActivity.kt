@@ -14,5 +14,13 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+//        https://srivastava-rishi.github.io/tweekapi/tweek.json
+        initTheme()
+    }
+
+    private fun initTheme() {
+        window.statusBarColor = resources.getColor(R.color.red)
+        window.navigationBarColor = resources.getColor(R.color.white)
     }
 }

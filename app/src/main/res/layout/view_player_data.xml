@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white3">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/ripple_light"
+        app:cardCornerRadius="@dimen/_10sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/ivRank"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:visibility="gone"
+                android:src="@drawable/number_one" />
+
+            <TextView
+                android:id="@+id/tvRank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="8"
+                android:visibility="visible"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/chineseBlack2"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:src="@drawable/number_one" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civUserPic"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_40sdp"
+                android:src="@drawable/ithree" />
+
+            <TextView
+                android:id="@+id/tvName"
+                fontPath="fonts/Montserrat-Bold.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:text="Nitik Jain"
+                android:layout_toEndOf="@+id/civUserPic"
+                android:textColor="@color/chineseBlack2"
+                android:textSize="@dimen/_10ssp"
+                tools:ignore="MissingPrefix" />
+
+
+            <TextView
+                android:id="@+id/tvScore"
+                fontPath="fonts/Montserrat-Bold.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:text="88"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/chineseBlack2"
+                android:textSize="@dimen/_10ssp"
+                tools:ignore="MissingPrefix" />
+
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
