@@ -48,4 +48,11 @@
         android:textSize="@dimen/_6ssp"
         tools:ignore="MissingPrefix" />
 
+    <View
+        android:id="@+id/vSeparator2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_alignParentBottom="true"
+        android:background="#EFEEEE"/>
+
 </RelativeLayout>

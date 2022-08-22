@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bottom_sheet_background">
+
+
+    <TextView
+        android:id="@+id/tvType"
+        fontPath="fonts/Montserrat-SemiBold.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:text="Sort By"
+        android:textColor="@color/chineseBlack2"
+        android:textSize="@dimen/_13ssp"
+        tools:ignore="MissingPrefix" />
+
+
+    <RadioGroup
+        android:id="@+id/radioPostType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvType"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp">
+
+        <RadioButton
+            android:id="@+id/radioScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:buttonTint="@color/lightBlack"
+            android:checked="true"
+            android:padding="@dimen/_4sdp"
+            android:text="Score"
+            fontPath="fonts/Montserrat-Regular.ttf"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_6sdp"
+            tools:ignore="MissingPrefix"
+            android:textColor="@color/chineseBlack2"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/radioRunUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:buttonTint="@color/lightBlack"
+            android:padding="@dimen/_4sdp"
+            android:text="Run-Up"
+            fontPath="fonts/Montserrat-Regular.ttf"
+            android:layout_marginBottom="@dimen/_6sdp"
+            tools:ignore="MissingPrefix"
+            android:textColor="@color/chineseBlack2"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/radioJump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:buttonTint="@color/lightBlack"
+            android:padding="@dimen/_4sdp"
+            android:text="Jump"
+            fontPath="fonts/Montserrat-Regular.ttf"
+            android:layout_marginBottom="@dimen/_6sdp"
+            tools:ignore="MissingPrefix"
+            android:textColor="@color/chineseBlack2"
+            android:textSize="@dimen/_13ssp" />
+        <RadioButton
+            android:id="@+id/radioBackFootContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:buttonTint="@color/lightBlack"
+            android:padding="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_6sdp"
+            android:text="Back-Foot Contact"
+            fontPath="fonts/Montserrat-Regular.ttf"
+            tools:ignore="MissingPrefix"
+            android:textColor="@color/chineseBlack2"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/radioFrontFootContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_6sdp"
+            android:buttonTint="@color/lightBlack"
+            android:padding="@dimen/_4sdp"
+            android:text="Front-Foot Contact"
+            fontPath="fonts/Montserrat-Regular.ttf"
+            tools:ignore="MissingPrefix"
+            android:textColor="@color/chineseBlack2"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:id="@+id/radioRelease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_6sdp"
+            android:buttonTint="@color/lightBlack"
+            android:padding="@dimen/_4sdp"
+            android:text="Release"
+            fontPath="fonts/Montserrat-Regular.ttf"
+            tools:ignore="MissingPrefix"
+            android:textColor="@color/chineseBlack2"
+            android:textSize="@dimen/_13ssp" />
+    </RadioGroup>
+
+
+</RelativeLayout>

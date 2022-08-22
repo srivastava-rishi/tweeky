@@ -7,6 +7,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.rsstudio.tweeky.R
 import com.rsstudio.tweeky.data.network.model.Athlete
 import com.rsstudio.tweeky.data.network.model.Data
@@ -18,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.log
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity() , View.OnClickListener {
 
     var logTag = "@MainActivity"
 
@@ -34,12 +35,17 @@ class MainActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         initRecyclerView()
+        initAction()
         initObservers()
     }
 
     private fun initTheme() {
         window.statusBarColor = resources.getColor(R.color.red)
         window.navigationBarColor = resources.getColor(R.color.white)
+    }
+
+    private fun initAction() {
+        binding.iViewBottom.setOnClickListener(this)
     }
 
     private fun initRecyclerView() {
@@ -61,8 +67,29 @@ class MainActivity : BaseActivity() {
                 // submit list
                 mainAdapter.submitList(list)
                 binding.iLoader.visibility = View.GONE
+                binding.fbMyScore.visibility = View.VISIBLE
             }
         }
 
+    }
+
+    private fun openSortSetting()  {
+
+        val bsd = BottomSheetDialog(this@MainActivity, R.style.BottomSheetStyle)
+        bsd.setContentView(R.layout.bottom_sheet_sort)
+
+        bsd.show()
+
+    }
+
+
+    override fun onClick(p0: View?) {
+
+        when(p0?.id){
+            R.id.iViewBottom -> {
+               openSortSetting()
+            }
+
+        }
     }
 }

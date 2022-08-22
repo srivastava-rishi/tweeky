@@ -73,4 +73,34 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
+    //
+    <style name = "FloatingActionButton" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
+
+        <item name="shapeAppearanceOverlay">@style/FabShapeStyle</item>
+
+    </style>
+
+
+    <style name="FabShapeStyle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+
+        <item name="cornerSize">@dimen/_16sdp</item>
+
+
+    </style>
+
+    <style name="BottomSheetStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:navigationBarColor">@color/white2</item>
+
+        <item name="bottomSheetStyle">@style/BottomSheetType</item>
+
+    </style>
+
+    <style name="BottomSheetType" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
 </resources>
