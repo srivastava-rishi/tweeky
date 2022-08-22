@@ -8,10 +8,15 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.android.material.card.MaterialCardView
 import com.rsstudio.tweeky.R
 import com.rsstudio.tweeky.data.network.model.Athlete
 import com.rsstudio.tweeky.data.network.model.Data
+import de.hdodenhof.circleimageview.CircleImageView
 
 class MainAdapter(
     private var context: Context,
@@ -27,12 +32,31 @@ class MainAdapter(
 
         var tvName: TextView = view.findViewById(R.id.tvName)
         var tvScore: TextView = view.findViewById(R.id.tvScore)
+        var tvMe: TextView = view.findViewById(R.id.tvMe)
+        var civUserPic: CircleImageView = view.findViewById(R.id.civUserPic)
+        var mcvMain: MaterialCardView = view.findViewById(R.id.mcvMain)
 
-        @SuppressLint("SetTextI18n")
-        fun onBind(item: Data) {
+        @SuppressLint("SetTextI18n", "ResourceAsColor")
+        fun onBind(item: Data,position: Int) {
 
             tvName.text = item.name
             tvScore.text = item.runup.toString()
+
+            if (item.id == "010"){
+                mcvMain.strokeWidth = 5
+                mcvMain.strokeColor = ContextCompat.getColor(context, R.color.red)
+                tvMe.visibility = View.VISIBLE
+            }
+
+            // setting image
+            Glide
+                .with(context)
+                .load(item.image)
+                .thumbnail(0.7f)
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .dontAnimate()
+                .into(civUserPic)
 
         }
 
@@ -49,7 +73,7 @@ class MainAdapter(
         val item = filteredAthleteList[position]
         if (holder is MainAdapter.ItemViewHolder) {
 //            holder.cvContainer.animation = AnimationUtils.loadAnimation(context,R.anim.anim_fade_scale)
-            holder.onBind(item)
+            holder.onBind(item,position)
         }
     }
 

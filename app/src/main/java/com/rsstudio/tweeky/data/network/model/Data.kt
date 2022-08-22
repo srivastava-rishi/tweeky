@@ -6,6 +6,7 @@ data class Data(
     val score: Int,
     val runup: Int,
     val jump: Int,
+    val image: String,
     val bfc: Int,
     val ffc: Int,
     val release: Int
