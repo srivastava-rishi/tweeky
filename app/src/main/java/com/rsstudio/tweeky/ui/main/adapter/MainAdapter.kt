@@ -43,7 +43,7 @@ class MainAdapter(
             tvScore.text = item.runup.toString()
 
             if (item.id == "010"){
-                mcvMain.strokeWidth = 5
+                mcvMain.strokeWidth = 2
                 mcvMain.strokeColor = ContextCompat.getColor(context, R.color.red)
                 tvMe.visibility = View.VISIBLE
             }

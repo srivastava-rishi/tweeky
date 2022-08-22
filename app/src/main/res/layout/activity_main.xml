@@ -3,29 +3,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.main.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/rlRoot"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white3">
+        android:layout_height="wrap_content">
 
         <include
-            android:id="@+id/iCard"
-            layout="@layout/view_card"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvAthlete"
+            android:id="@+id/iBottomNav"
+            layout="@layout/view_bottom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cv"
-            android:layout_marginTop="@dimen/_90sdp"
-            android:overScrollMode="never" />
+            android:layout_height="@dimen/_44sdp"
+            android:layout_alignParentBottom="true" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/iBottomNav">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <FrameLayout
+                    android:id="@+id/fl"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/white3">
+
+                    <include
+                        android:id="@+id/iCard"
+                        layout="@layout/view_card" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvAthlete"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_90sdp"
+                        android:overScrollMode="never" />
+
+                </FrameLayout>
+
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
         <include
             android:id="@+id/iLoader"
-            android:visibility="visible"
-            layout="@layout/view_loader"/>
+            layout="@layout/view_loader"
+            android:visibility="visible" />
 
-
-    </FrameLayout>
+    </RelativeLayout>
 </layout>
