@@ -32,10 +32,14 @@
             android:layout_height="@dimen/_44sdp"
             android:layout_alignParentBottom="true" />
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/iViewBottom">
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/iViewBottom">
+                android:layout_height="match_parent">
 
                 <FrameLayout
                     android:id="@+id/fl"
@@ -60,10 +64,13 @@
 
             </RelativeLayout>
 
+        </androidx.core.widget.NestedScrollView>
+
+
         <include
             android:id="@+id/iLoader"
             layout="@layout/view_loader"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
     </RelativeLayout>
 </layout>

@@ -159,11 +159,18 @@ class MainAdapter(
               }
           }
       } as MutableList<Data>
-//        Log.d(logTag, "sortType: $sortType")
-//        Log.d(logTag, "sortList: $list")
         sortBy = sortType
         notifyDataSetChanged()
 
+    }
+
+    fun getMyPosition() : Int {
+
+        val data = Data(id = "010")
+        val pos = list.indexOf(data)
+
+        Log.d(logTag, "myPosition: $pos")
+        return pos
     }
 
     override fun getItemCount(): Int {

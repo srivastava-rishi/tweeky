@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSmoothScroller
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.rsstudio.tweeky.R
 import com.rsstudio.tweeky.data.network.model.Athlete
@@ -34,7 +36,6 @@ class MainActivity : BaseActivity() , View.OnClickListener {
 
     private val viewModel: MainViewModel by viewModels()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -56,6 +57,7 @@ class MainActivity : BaseActivity() , View.OnClickListener {
 
     private fun initAction() {
         binding.iViewBottom.rlBottom.setOnClickListener(this)
+        binding.fbMyScore.setOnClickListener(this)
     }
 
     private fun initRecyclerView() {
@@ -189,7 +191,12 @@ class MainActivity : BaseActivity() , View.OnClickListener {
             R.id.rlBottom -> {
                openSortSetting()
             }
+            R.id.fbMyScore -> {
+                binding.rvAthlete.smoothScrollToPosition(mainAdapter.getMyPosition())
+            }
+
 
         }
     }
+
 }
