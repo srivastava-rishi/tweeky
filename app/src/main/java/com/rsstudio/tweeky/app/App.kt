@@ -7,7 +7,7 @@ import io.github.inflationx.calligraphy3.CalligraphyInterceptor
 import io.github.inflationx.viewpump.ViewPump
 
 @HiltAndroidApp
-class TweekyApp: Application() {
+class App: Application() {
 
     override fun onCreate() {
         super.onCreate()

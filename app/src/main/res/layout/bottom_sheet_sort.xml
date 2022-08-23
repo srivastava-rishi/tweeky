@@ -22,7 +22,7 @@
 
 
     <RadioGroup
-        android:id="@+id/radioPostType"
+        android:id="@+id/radioSortType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvType"
@@ -32,33 +32,32 @@
 
         <RadioButton
             android:id="@+id/radioScore"
+            fontPath="fonts/Montserrat-Regular.ttf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
-            android:buttonTint="@color/lightBlack"
-            android:checked="true"
-            android:padding="@dimen/_4sdp"
-            android:text="Score"
-            fontPath="fonts/Montserrat-Regular.ttf"
             android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginBottom="@dimen/_6sdp"
-            tools:ignore="MissingPrefix"
+            android:buttonTint="@color/lightBlack"
+            android:padding="@dimen/_4sdp"
+            android:text="Score"
             android:textColor="@color/chineseBlack2"
-            android:textSize="@dimen/_13ssp" />
+            android:textSize="@dimen/_13ssp"
+            tools:ignore="MissingPrefix" />
 
         <RadioButton
             android:id="@+id/radioRunUp"
+            fontPath="fonts/Montserrat-Regular.ttf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_6sdp"
             android:buttonTint="@color/lightBlack"
             android:padding="@dimen/_4sdp"
             android:text="Run-Up"
-            fontPath="fonts/Montserrat-Regular.ttf"
-            android:layout_marginBottom="@dimen/_6sdp"
-            tools:ignore="MissingPrefix"
             android:textColor="@color/chineseBlack2"
-            android:textSize="@dimen/_13ssp" />
+            android:textSize="@dimen/_13ssp"
+            tools:ignore="MissingPrefix" />
 
         <RadioButton
             android:id="@+id/radioJump"

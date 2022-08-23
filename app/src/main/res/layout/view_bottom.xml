@@ -1,58 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="@dimen/_40sdp">
 
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <View
-        android:id="@+id/vSeparator"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:layout_alignParentTop="true"
-        android:background="#EFEEEE"/>
+        android:layout_height="@dimen/_40sdp"
+        android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/ivRank"
-        android:layout_width="@dimen/_10sdp"
-        android:layout_height="@dimen/_10sdp"
-        android:layout_toLeftOf="@+id/tvSortBy"
-        android:layout_centerVertical="true"
-        android:src="@drawable/sort"
-        android:visibility="visible" />
+        <RelativeLayout
+            android:id="@+id/rlBottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvSortBy"
-        fontPath="fonts/Montserrat-Bold.ttf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="@dimen/_4sdp"
-        android:layout_centerHorizontal="true"
-        android:text="Sort by "
-        android:textColor="@color/chineseBlack2"
-        android:textSize="@dimen/_10ssp"
-        tools:ignore="MissingPrefix" />
+            <View
+            android:id="@+id/vSeparator"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_alignParentTop="true"
+            android:background="#EFEEEE" />
 
-    <TextView
-        android:id="@+id/tvSortType"
-        fontPath="fonts/Montserrat-Bold.ttf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:text="Score"
-        android:layout_below="@+id/tvSortBy"
-        android:textColor="@color/chineseBlack2"
-        android:textSize="@dimen/_6ssp"
-        tools:ignore="MissingPrefix" />
+        <ImageView
+            android:id="@+id/ivRank"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_10sdp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tvSortBy"
+            android:src="@drawable/sort"
+            android:visibility="visible" />
 
-    <View
-        android:id="@+id/vSeparator2"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:layout_alignParentBottom="true"
-        android:background="#EFEEEE"/>
+            <TextView
+                android:id="@+id/tvSortBy"
+                fontPath="fonts/Montserrat-Bold.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:text="Sort by "
+                android:textColor="@color/chineseBlack2"
+                android:textSize="@dimen/_10ssp"
+                tools:ignore="MissingPrefix" />
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/tvSortType"
+                fontPath="fonts/Montserrat-Bold.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvSortBy"
+                android:layout_centerInParent="true"
+                android:text="Score"
+                android:textColor="@color/chineseBlack2"
+                android:textSize="@dimen/_6ssp"
+                tools:ignore="MissingPrefix" />
+
+        <View
+            android:id="@+id/vSeparator2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_alignParentBottom="true"
+            android:background="#EFEEEE" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</layout>

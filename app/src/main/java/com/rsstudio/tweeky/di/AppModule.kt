@@ -2,7 +2,8 @@ package com.rsstudio.tweeky.di
 
 import android.content.Context
 import com.google.gson.GsonBuilder
-import com.rsstudio.tweeky.app.TweekyApp
+import com.rsstudio.tweeky.app.App
+import com.rsstudio.tweeky.data.local.preference.PreferenceProvider
 import com.rsstudio.tweeky.data.network.apis.AthleteApiInterface
 import com.rsstudio.tweeky.util.Constant
 import dagger.Module
@@ -20,8 +21,14 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun applicationContext( @ApplicationContext applicationContext: Context) : TweekyApp {
-        return applicationContext as TweekyApp
+    fun applicationContext( @ApplicationContext applicationContext: Context) : App {
+        return applicationContext as App
+    }
+
+    @Singleton
+    @Provides
+    fun preferenceProvider(@ApplicationContext applicationContext: Context): PreferenceProvider {
+        return PreferenceProvider(applicationContext)
     }
 
     @Singleton

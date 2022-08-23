@@ -2,11 +2,13 @@ package com.rsstudio.tweeky.ui.main.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -17,14 +19,14 @@ import com.rsstudio.tweeky.R
 import com.rsstudio.tweeky.data.network.model.Athlete
 import com.rsstudio.tweeky.data.network.model.Data
 import de.hdodenhof.circleimageview.CircleImageView
+import java.util.*
 
 class MainAdapter(
     private var context: Context,
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() , Filterable {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
 
-    private var list: MutableList<Athlete> = mutableListOf()
-
-    private var filteredAthleteList: MutableList<Data> = mutableListOf()
+    private var list: MutableList<Data> = mutableListOf()
+    private var sortBy: Int = 0
 
     var logTag = "@MainAdapter"
 
@@ -32,6 +34,8 @@ class MainAdapter(
 
         var tvName: TextView = view.findViewById(R.id.tvName)
         var tvScore: TextView = view.findViewById(R.id.tvScore)
+        var ivRank: ImageView = view.findViewById(R.id.ivRank)
+        var tvRank: TextView = view.findViewById(R.id.tvRank)
         var tvMe: TextView = view.findViewById(R.id.tvMe)
         var civUserPic: CircleImageView = view.findViewById(R.id.civUserPic)
         var mcvMain: MaterialCardView = view.findViewById(R.id.mcvMain)
@@ -40,12 +44,60 @@ class MainAdapter(
         fun onBind(item: Data,position: Int) {
 
             tvName.text = item.name
-            tvScore.text = item.runup.toString()
 
+            // assign rank
+            when (position) {
+                0 -> {
+                    tvRank.visibility = View.GONE
+                    ivRank.visibility = View.VISIBLE
+                    ivRank.setImageResource(R.drawable.number_one)
+                }
+                1 -> {
+                    tvRank.visibility = View.GONE
+                    ivRank.visibility = View.VISIBLE
+                    ivRank.setImageResource(R.drawable.number_two)
+                }
+                2 -> {
+                    tvRank.visibility = View.GONE
+                    ivRank.visibility = View.VISIBLE
+                    ivRank.setImageResource(R.drawable.number_three)
+                }
+                else -> {
+                    ivRank.visibility = View.GONE
+                    tvRank.visibility = View.VISIBLE
+                    tvRank.text = (position + 1).toString()
+                }
+            }
+
+            //setting the score
+            when (sortBy) {
+                1 -> {
+                    tvScore.text = item.score.toString()
+                }
+                2 -> {
+                    tvScore.text = item.runup.toString()
+                }
+                3 -> {
+                    tvScore.text = item.jump.toString()
+                }
+                4 -> {
+                    tvScore.text = item.bfc.toString()
+                }
+                5 -> {
+                    tvScore.text = item.ffc.toString()
+                }
+                else -> {
+                    tvScore.text = item.release.toString()
+                }
+            }
+          // consider mine
             if (item.id == "010"){
-                mcvMain.strokeWidth = 2
+                mcvMain.strokeWidth = 4
                 mcvMain.strokeColor = ContextCompat.getColor(context, R.color.red)
                 tvMe.visibility = View.VISIBLE
+            }else{
+                mcvMain.strokeWidth = 0
+                tvMe.visibility = View.GONE
             }
 
             // setting image
@@ -70,60 +122,57 @@ class MainAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        val item = filteredAthleteList[position]
+        val item = list[position]
         if (holder is MainAdapter.ItemViewHolder) {
 //            holder.cvContainer.animation = AnimationUtils.loadAnimation(context,R.anim.anim_fade_scale)
             holder.onBind(item,position)
         }
     }
 
-    fun submitList(newList: List<Athlete>) {
+    fun submitList(newList: List<Data>, sortType: Int) {
         list.clear()
-        filteredAthleteList.clear()
         list.addAll(newList)
-        filteredAthleteList.addAll(list[0].athletes)
+        sortList(sortType)
+    }
+
+    fun sortList(sortType: Int) {
+
+      list = list.sortedByDescending {
+          when (sortType) {
+              1 -> {
+                  it.score
+              }
+              2 -> {
+                  it.runup
+              }
+              3 -> {
+                  it.jump
+              }
+              4 -> {
+                  it.bfc
+              }
+              5 -> {
+                  it.ffc
+              }
+              else -> {
+                  it.release
+              }
+          }
+      } as MutableList<Data>
+//        Log.d(logTag, "sortType: $sortType")
+//        Log.d(logTag, "sortList: $list")
+        sortBy = sortType
         notifyDataSetChanged()
+
     }
 
     override fun getItemCount(): Int {
-        if (filteredAthleteList.size != 0) {
-            return filteredAthleteList.size
+        if (list.size != 0) {
+            return list.size
         }
         return 0
     }
 
-    override fun getFilter(): Filter {
-
-        return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-
-                val charString = constraint?.toString() ?: ""
-
-                if(charString.isEmpty()){
-                    filteredAthleteList.clear()
-                    filteredAthleteList.addAll(list[0].athletes)
-                } else{
-
-                    var filteredList:  MutableList<Data> = mutableListOf()
-
-                    list[0].athletes.filter {
-                        (it.name.lowercase().contains(constraint.toString().lowercase().trim()))
-                    }.forEach{ filteredList.add(it)}
-                    filteredAthleteList = filteredList
-                }
-
-                return FilterResults().apply { values = filteredAthleteList }
-
-            }
-            override fun publishResults(constraint: CharSequence, results: FilterResults?) {
-                if (results!!.values != null) {
-                    filteredAthleteList = results.values as MutableList<Data>
-                    notifyDataSetChanged()
-                }
-
-            }
-        }
-    }
 }
 
 

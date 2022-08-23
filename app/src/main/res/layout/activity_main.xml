@@ -30,9 +30,6 @@
             layout="@layout/view_bottom"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_44sdp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="@drawable/ripple_light"
             android:layout_alignParentBottom="true" />
 
         <androidx.core.widget.NestedScrollView
