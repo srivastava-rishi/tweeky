@@ -6,9 +6,19 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/view_background">
+        android:layout_height="wrap_content">
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv"
+            style="@style/customCardView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_205sdp"
+            android:backgroundTint="@color/red">
+
+            <RelativeLayout
+                android:id="@+id/rlOuter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
                 <RelativeLayout
                     android:id="@+id/rlInner"
@@ -49,7 +59,6 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="@dimen/_8sdp"
-                        android:background="@drawable/ripple_1006"
                         android:padding="@dimen/_2sdp"
                         android:src="@drawable/search"
                         app:tint="@color/white" />
@@ -57,20 +66,25 @@
 
                 </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tvInstituteName"
-            fontPath="fonts/Montserrat-Regular.ttf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rlInner"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_25sdp"
-            android:text=""
-            android:textColor="@color/white"
-            android:textSize="@dimen/_10ssp"
-            tools:ignore="MissingPrefix" />
+
+                <TextView
+                    android:id="@+id/tvInstituteName"
+                    fontPath="fonts/Montserrat-Regular.ttf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rlInner"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:text="Fast Bowling - ABCD Workshop"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    tools:ignore="MissingPrefix" />
 
             </RelativeLayout>
 
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
 </layout>

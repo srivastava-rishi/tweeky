@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.ImageView
@@ -124,7 +125,7 @@ class MainAdapter(
 
         val item = list[position]
         if (holder is MainAdapter.ItemViewHolder) {
-//            holder.cvContainer.animation = AnimationUtils.loadAnimation(context,R.anim.anim_fade_scale)
+            holder.mcvMain.animation = AnimationUtils.loadAnimation(context,R.anim.anim_fade_scale)
             holder.onBind(item,position)
         }
     }

@@ -2,28 +2,24 @@ package com.rsstudio.tweeky.ui.main
 
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.Switch
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSmoothScroller
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.rsstudio.tweeky.R
 import com.rsstudio.tweeky.data.network.model.Athlete
-import com.rsstudio.tweeky.data.network.model.Data
 import com.rsstudio.tweeky.databinding.ActivityMainBinding
 import com.rsstudio.tweeky.ui.base.BaseActivity
 import com.rsstudio.tweeky.ui.main.adapter.MainAdapter
 import com.rsstudio.tweeky.ui.main.viewModel.MainViewModel
+import com.rsstudio.tweeky.ui.search.SearchActivity
+import com.rsstudio.tweeky.util.Constant
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.math.log
+import java.io.Serializable
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() , View.OnClickListener {
@@ -33,6 +29,8 @@ class MainActivity : BaseActivity() , View.OnClickListener {
     lateinit var binding: ActivityMainBinding
 
     private lateinit var mainAdapter: MainAdapter
+
+    private val list: MutableList<Athlete> = mutableListOf()
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -58,6 +56,8 @@ class MainActivity : BaseActivity() , View.OnClickListener {
     private fun initAction() {
         binding.iViewBottom.rlBottom.setOnClickListener(this)
         binding.fbMyScore.setOnClickListener(this)
+        binding.iCard.ivSearch.setOnClickListener(this)
+        binding.iCard.ivBack.setOnClickListener(this)
     }
 
     private fun initRecyclerView() {
@@ -74,10 +74,10 @@ class MainActivity : BaseActivity() , View.OnClickListener {
 
             if (it != null) {
                 initTheme()
-                val list: MutableList<Athlete> = mutableListOf()
                 list.add(it)
                 // submit list
                 mainAdapter.submitList(list[0].athletes,pref.getSortType())
+                binding.iCard.tvInstituteName.text = it.organisation
                 binding.iLoader.visibility = View.GONE
                 binding.fbMyScore.visibility = View.VISIBLE
             }
@@ -97,6 +97,7 @@ class MainActivity : BaseActivity() , View.OnClickListener {
         val radioButton4 = bsd.findViewById<RadioButton>(R.id.radioBackFootContact)
         val radioButton5 = bsd.findViewById<RadioButton>(R.id.radioFrontFootContact)
         val radioButton6 = bsd.findViewById<RadioButton>(R.id.radioRelease)
+        val ivCancel = bsd.findViewById<ImageView>(R.id.ivCancel)
 
         when {
             pref.getSortType() == 1 -> {
@@ -156,8 +157,12 @@ class MainActivity : BaseActivity() , View.OnClickListener {
             mainAdapter.sortList(pref.getSortType())
             bsd.dismiss()
         }
-        bsd.show()
 
+        ivCancel!!.setOnClickListener {
+            bsd.dismiss()
+        }
+
+        bsd.show()
     }
 
     @SuppressLint("SetTextI18n")
@@ -195,6 +200,15 @@ class MainActivity : BaseActivity() , View.OnClickListener {
                 binding.rvAthlete.smoothScrollToPosition(mainAdapter.getMyPosition())
             }
 
+            R.id.ivSearch -> {
+                val intent = Intent(this, SearchActivity::class.java)
+                intent.putExtra(Constant.PARAM_DATA, list as Serializable)
+                startActivity(intent)
+            }
+
+            R.id.ivBack -> {
+                finish()
+            }
 
         }
     }
