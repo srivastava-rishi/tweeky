@@ -21,9 +21,6 @@
             android:layout_marginBottom="@dimen/_8sdp"
             android:animateLayoutChanges="true"
             android:backgroundTint="@color/ghost_white"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="@drawable/ripple_light2"
             app:cardCornerRadius="@dimen/_10sdp">
 
 
@@ -45,7 +42,6 @@
                     android:layout_toStartOf="@+id/ivSearch"
                     android:background="@color/transparent"
                     android:ems="10"
-                    android:textCursorDrawable = "@null"
                     android:hint="search by name"
                     android:inputType="textPersonName"
                     android:maxLength="10"
@@ -53,6 +49,7 @@
                     android:singleLine="true"
                     android:textColor="@color/text_color"
                     android:textColorHint="@color/text_color"
+                    android:textCursorDrawable="@null"
                     android:textSize="@dimen/_10ssp"
                     android:visibility="visible" />
 
