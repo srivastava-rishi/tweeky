@@ -2,7 +2,7 @@
 It is mobile application that loads an API.
 
 # Current Features
-* It follow MVVM Design Pattern.
+* It follows MVVM Design Pattern.
 * You can search through the list by player name.
 * You can also sort the list by player score.  
 * It also contains some cool animation.
